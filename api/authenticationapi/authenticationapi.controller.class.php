@@ -8,7 +8,7 @@
 Wpng::loadApiController('_baseapi');
 class AuthenticationApiController extends _BaseApiController {
     public function checkLogin(){
-        echo 'From Api';
-        return true;
+        $request = $this->httpPostData();
+        var_dump($request);
     }
 }

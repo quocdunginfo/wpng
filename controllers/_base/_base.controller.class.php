@@ -16,4 +16,15 @@ class _BaseController {
         $c = substr($cName, 0, strpos($cName, 'controller'));
         return $c;
     }
+    protected function httpPostData(){
+        //$postData = file_get_contents("php://input", true);
+        //$request = json_decode($postData);
+        //return $request;
+
+        return json_decode(json_encode($_POST));
+    }
+    protected function httpGetData(){
+        $request = (object) $_GET;
+        return $request;
+    }
 }

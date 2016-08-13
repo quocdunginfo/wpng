@@ -13,8 +13,11 @@ class WpngController extends _BaseController {
         $this->render('index', $model);
     }
     public function showHand(){
-        $model = get_class($this);
+        $request = $this->httpPostData();
+        var_dump($request);
+        $request = $this->httpGetData();
+        var_dump($request);
 
-        $this->render('showhand', $model);
+        $this->render('showhand', '');
     }
 }
