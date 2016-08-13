@@ -6,6 +6,9 @@
  * Time: 3:32 AM
  */
 class _BaseView {
+    public function renderInPlaceHolder($childView){
+        $childView();
+    }
     public function render($model){
         // Must be overwrite in child class
     }

@@ -8,9 +8,7 @@
 Wpng::loadController('_base');
 class WpngController extends _BaseController {
     public function index(){
-        $model = get_class($this);
-
-        $this->render(__FUNCTION__, $model);
+        $this->render(__FUNCTION__, 'Content from MVC Controller');
     }
     public function showHand(){
         $request = $this->httpPostData();
