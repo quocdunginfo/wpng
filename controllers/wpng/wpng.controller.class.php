@@ -10,7 +10,7 @@ class WpngController extends _BaseController {
     public function index(){
         $model = get_class($this);
 
-        $this->render('index', $model);
+        $this->render(__FUNCTION__, $model);
     }
     public function showHand(){
         $request = $this->httpPostData();
@@ -18,6 +18,6 @@ class WpngController extends _BaseController {
         $request = $this->httpGetData();
         var_dump($request);
 
-        $this->render('showhand', '');
+        $this->render(__FUNCTION__, '');
     }
 }
