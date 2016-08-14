@@ -74,7 +74,10 @@ class Wpng
 				$scripts = array(
 					'/plugins/angularjs/angular.min.js',
 					'/plugins/angularjs/angular-route.min.js',
-					'/plugins/ngDialog/ngDialog.js'
+					'/plugins/ngDialog/ngDialog.js',
+
+					//'/plugins/angularjs/angular-animate.min.js',
+					//'/plugins/angular-loading-bar/loading-bar.js'
 				);
 				foreach($scripts as $item){
 					$fullURL = plugins_url($item, __FILE__);
@@ -87,7 +90,9 @@ class Wpng
 			{
 				$styles = array(
 					'/plugins/ngDialog/ngDialog-theme-default.css',
-					'/plugins/ngDialog/ngDialog.css'
+					'/plugins/ngDialog/ngDialog.css',
+					
+					//'/plugins/angular-loading-bar/loading-bar.css'
 				);
 				foreach($styles as $item){
 					$fullURL = plugins_url($item, __FILE__);
