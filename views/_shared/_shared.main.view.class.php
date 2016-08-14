@@ -14,9 +14,9 @@ class _SharedMainView extends _BaseView {
                 This is Main Shared View which define ngApp
             </p>
             <script>
-                // Define the `phonecatApp` module
                 var Wpng = {};
-                Wpng.App = angular.module('WpngApp', []);
+                Wpng.App = angular.module('WpngApp', ['ngRoute']);
+                Wpng.BaseUrl = '/';
             </script>
             <div ng-app="WpngApp">
                 <?php

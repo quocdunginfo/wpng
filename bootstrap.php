@@ -61,7 +61,8 @@ class Wpng
 		// Register JS
 		{
 			$scripts = array(
-				'/plugins/angularjs/angular.min.js'
+				'/plugins/angularjs/angular.min.js',
+				'/plugins/angularjs/angular-route.min.js'
 			);
 			foreach($scripts as $item){
 				$fullURL = plugins_url($item, __FILE__);
@@ -80,6 +81,13 @@ class Wpng
 //				include_once($item[0]);
 //			}
 //		}
+
+		// Add hook to html > Head
+		{
+			add_action('admin_head', function(){
+
+			});
+		}
 
 		// Register Main Page
 		add_action('admin_menu', function(){
