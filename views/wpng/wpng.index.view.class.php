@@ -20,24 +20,34 @@ class WpngIndexView extends _SharedMainView {
                     <?php
                     Wpng::loadFile('helper/ui.control/ui.helper.render.class.php');
                     $form = new UIForm();
+                    $form->ng_submit = 'formSubmit()';
                     $button = new UIButton();
+                    $textbox = new UITextBox();
                     {
                         //$button->id = 'WpngButton001';
                         $button->label = __('Click here', 'wpng');
-                        $button->ng_click = 'openDialog($event)';
+                        //$button->ng_click = 'openDialog($event)';
                         $button->style = '';
                         $button->class = 'btn-primary';
-                        $button->control_length = 10;
+                        $button->control_length = 8;
+                        $button->button_type = UIButton::$TYPE_SUBMIT;
 
+                        $textbox->label = __('Email', 'wpng');
+                        $textbox->ng_model = 'emailValue';
+                        $textbox->required = true;
+                        //$textbox->read_only = true;
+                        //$textbox->value = '@Sample';
+                        $textbox->place_holder = 'Enter text here';
+                        $textbox->input_type = UITextBox::$TYPE_TEXT;
+
+                        $form->controls[] = $textbox;
                         $form->controls[] = $button;
                     }
                     ?>
                     <div>
                         <?php UIRenderHelper::render($form) ?>
                     </div>
-                    <div>
-                        <?php UIRenderHelper::render($button) ?>
-                    </div>
+
                 </div>
                 <br>
                 <?php echo __('Msg', 'wpng') ?>
@@ -48,6 +58,7 @@ class WpngIndexView extends _SharedMainView {
             <script>
                 Wpng.App.controller('wpngController', function($scope, ngDialog) {
                     $scope.template = {};
+                    $scope.emailValue = 'Value from AngularJS';
                     $scope.changeTemplate = function(e, $view){
                         $scope.template.url = '/?module=wpng&controller=wpng&action=' + $view;
                     };
@@ -56,6 +67,9 @@ class WpngIndexView extends _SharedMainView {
                     };
                     $scope.openDialog = function(e){
                         ngDialog.open({ template: '/?module=wpng&controller=wpng&action=showhand', className: 'ngdialog-theme-default' });
+                    };
+                    $scope.formSubmit = function(e){
+                        alert('form Submit via AngularJS');
                     };
                 });
             </script>
