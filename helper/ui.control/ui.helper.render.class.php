@@ -46,7 +46,6 @@ class UIRenderHelper{
             <?php if($control->ng_submit) : ?>
                 ng-submit="<?php echo $control->ng_submit ?>"
             <?php endif; ?>
-            ?>
             <?php echo $control->attributes ?>
             >
 
