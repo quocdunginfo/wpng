@@ -78,8 +78,8 @@ class Wpng
 
 					'/plugins/bootstrap/bootstrap.min.js',
 
-					//'/plugins/angularjs/angular-animate.min.js',
-					//'/plugins/angular-loading-bar/loading-bar.js'
+					'/plugins/angularjs/angular-animate.min.js',
+					'/plugins/angular-loading-bar/loading-bar.js'
 				);
 				foreach($scripts as $item){
 					$fullURL = plugins_url($item, __FILE__);
@@ -97,7 +97,7 @@ class Wpng
 					'/plugins/bootstrap/bootstrap.min.css',
 					'/plugins/bootstrap/bootstrap-theme.min.css',
 
-					//'/plugins/angular-loading-bar/loading-bar.css'
+					'/plugins/angular-loading-bar/loading-bar.css'
 				);
 				foreach($styles as $item){
 					$fullURL = plugins_url($item, __FILE__);
