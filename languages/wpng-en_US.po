@@ -1,0 +1,36 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wpng\n"
+"POT-Creation-Date: 2016-08-14 17:52+0700\n"
+"PO-Revision-Date: 2016-08-14 17:59+0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: bootstrap.php:11
+msgid "Wpng installed successfully!"
+msgstr "Wpng đã được cài đặt thành công!"
+
+#: bootstrap.php:61
+msgid "Wpng Page Title"
+msgstr "Wpng tiêu đề trang"
+
+#: bootstrap.php:61
+msgid "Wpng Menu"
+msgstr "Wpng Menu"
+
+#: views/wpng/wpng.showhand.view.class.php:15
+msgid "Msg"
+msgstr "Tin nhắn"
+
+#: wpng.php:36
+msgid "Hi there!  I'm just a plugin, not much I can do when called directly."
+msgstr "Chỉ có thể gọi chạy bên wrong Wordpress"

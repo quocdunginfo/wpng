@@ -37,6 +37,8 @@ class Wpng
 	{
 		// Add Action, Filter
 		//...
+		// Translate using PO, MO
+		load_plugin_textdomain( 'wpng', false, basename(dirname(__FILE__)) . '/languages');
 
 		// Final
 		self::$initiated = true;
@@ -47,7 +49,6 @@ class Wpng
 	private static function initHooksAdmin()
 	{
 		// Add Action, Filter. Register libraries
-
 		require_once(WPNG_PLUGIN_DIR . 'plugins/wp-admin-notification/bootstrap.php');
 		// Show first msg after installed
 		{
@@ -57,44 +58,48 @@ class Wpng
 				delete_option('wpng_first_msg');
 			}
 		}
-
-		// Register JS
-		{
-			$scripts = array(
-				'/plugins/angularjs/angular.min.js',
-				'/plugins/angularjs/angular-route.min.js'
-			);
-			foreach($scripts as $item){
-				$fullURL = plugins_url($item, __FILE__);
-				wp_register_script($item, $fullURL);
-				wp_enqueue_script($item);
-			}
-		}
-
-//		// Load all .class file to domain
-//		{
-//			$dir = new RecursiveDirectoryIterator(__DIR__);
-//			$itr = new RecursiveIteratorIterator($dir);
-//			$regex = new RegexIterator($itr, '/^.+\.class.php$/i', RecursiveRegexIterator::GET_MATCH);
-//			foreach($regex as $item){
-//				//self::loadFileAbsPath($item[0]);
-//				include_once($item[0]);
-//			}
-//		}
-
-		// Add hook to html > Head
-		{
-			add_action('admin_head', function(){
-
-			});
-		}
-
 		// Register Main Page
 		add_action('admin_menu', function(){
 			add_menu_page(__('Wpng Page Title', 'wpng'), __('Wpng Menu', 'wpng'), 'manage_options', 'wpng', function(){
 				self::runController();
 			});
 		});
+
+		// Run under Wpng domain only
+		$page = $_GET['page'];
+		if('wpng' == $page){
+
+			// Register JS
+			{
+				$scripts = array(
+					'/plugins/angularjs/angular.min.js',
+					'/plugins/angularjs/angular-route.min.js'
+				);
+				foreach($scripts as $item){
+					$fullURL = plugins_url($item, __FILE__);
+					wp_register_script($item, $fullURL);
+					wp_enqueue_script($item);
+				}
+			}
+
+			//		// Load all .class file to domain
+			//		{
+			//			$dir = new RecursiveDirectoryIterator(__DIR__);
+			//			$itr = new RecursiveIteratorIterator($dir);
+			//			$regex = new RegexIterator($itr, '/^.+\.class.php$/i', RecursiveRegexIterator::GET_MATCH);
+			//			foreach($regex as $item){
+			//				//self::loadFileAbsPath($item[0]);
+			//				include_once($item[0]);
+			//			}
+			//		}
+
+			// Add hook to html > Head
+			{
+				add_action('admin_head', function(){
+
+				});
+			}
+		}
 
 		// Final
 		self::$admin_initiated = true;

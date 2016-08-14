@@ -33,7 +33,7 @@ Copyright 2005-2015 quocdunginfo.
 
 // Make sure we don't expose any info if called directly
 if ( !function_exists( 'add_action' ) ) {
-	echo __('Hi there!  I\'m just a plugin, not much I can do when called directly.');
+	echo __('Hi there!  I\'m just a plugin, not much I can do when called directly.', 'wpng');
 	exit;
 }
 

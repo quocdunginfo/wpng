@@ -14,6 +14,8 @@ class WpngIndexView extends _SharedMainView {
                 <button ng-click="changeTemplate($event, 'showhand')">Show Hand</button>
                 <button ng-click="changeTemplate($event, 'checkout')">Check Out</button>
                 <br>
+                <?php echo __('Msg', 'wpng') ?>
+                <br>
                 <div ng-include src="template.url"></div>
             </div>
             <script>

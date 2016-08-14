@@ -12,7 +12,7 @@ class WpngShowHandView extends _BaseView {
            ?>
             <div ng-controller="showHandController">
                 <div>
-                    Msg: {{msg}}
+                    <?php echo __('Msg', 'wpng') ?>: {{msg}}
                 </div>
                 <button ng-click="viewShowHand($event)">Click here to view Check Out inside</button>
                 <br>
