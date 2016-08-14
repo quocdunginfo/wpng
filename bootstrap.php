@@ -73,12 +73,26 @@ class Wpng
 			{
 				$scripts = array(
 					'/plugins/angularjs/angular.min.js',
-					'/plugins/angularjs/angular-route.min.js'
+					'/plugins/angularjs/angular-route.min.js',
+					'/plugins/ngDialog/ngDialog.js'
 				);
 				foreach($scripts as $item){
 					$fullURL = plugins_url($item, __FILE__);
 					wp_register_script($item, $fullURL);
 					wp_enqueue_script($item);
+				}
+			}
+
+			// Register CSS
+			{
+				$styles = array(
+					'/plugins/ngDialog/ngDialog-theme-default.css',
+					'/plugins/ngDialog/ngDialog.css'
+				);
+				foreach($styles as $item){
+					$fullURL = plugins_url($item, __FILE__);
+					wp_register_style($item, $fullURL);
+					wp_enqueue_style($item);
 				}
 			}
 

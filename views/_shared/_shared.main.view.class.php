@@ -15,7 +15,7 @@ class _SharedMainView extends _BaseView {
             </p>
             <script>
                 var Wpng = {};
-                Wpng.App = angular.module('WpngApp', ['ngRoute']);
+                Wpng.App = angular.module('WpngApp', ['ngRoute', 'ngDialog']);
                 Wpng.BaseUrl = '/';
             </script>
             <div ng-app="WpngApp">

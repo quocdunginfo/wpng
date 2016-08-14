@@ -13,16 +13,20 @@ class WpngIndexView extends _SharedMainView {
             <div ng-controller="wpngController">
                 <button ng-click="changeTemplate($event, 'showhand')">Show Hand</button>
                 <button ng-click="changeTemplate($event, 'checkout')">Check Out</button>
+                <button ng-click="showPopup($event)">Show Popup</button>
                 <br>
                 <?php echo __('Msg', 'wpng') ?>
                 <br>
                 <div ng-include src="template.url"></div>
             </div>
             <script>
-                Wpng.App.controller('wpngController', function($scope) {
+                Wpng.App.controller('wpngController', function($scope, ngDialog) {
                     $scope.template = {};
                     $scope.changeTemplate = function(e, $view){
                         $scope.template.url = '/?module=wpng&controller=wpng&action=' + $view;
+                    };
+                    $scope.showPopup = function(e){
+                        ngDialog.open({ template: '/?module=wpng&controller=wpng&action=showhand', className: 'ngdialog-theme-default' });
                     };
                 });
             </script>
