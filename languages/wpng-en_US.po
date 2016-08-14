@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wpng\n"
-"POT-Creation-Date: 2016-08-14 17:52+0700\n"
-"PO-Revision-Date: 2016-08-14 17:59+0700\n"
+"POT-Creation-Date: 2016-08-14 20:19+0700\n"
+"PO-Revision-Date: 2016-08-14 20:19+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -19,14 +19,19 @@ msgstr ""
 msgid "Wpng installed successfully!"
 msgstr "Wpng đã được cài đặt thành công!"
 
-#: bootstrap.php:61
+#: bootstrap.php:63
 msgid "Wpng Page Title"
 msgstr "Wpng tiêu đề trang"
 
-#: bootstrap.php:61
+#: bootstrap.php:63
 msgid "Wpng Menu"
 msgstr "Wpng Menu"
 
+#: views/wpng/wpng.index.view.class.php:26
+msgid "Click here"
+msgstr "Bấm vào đây"
+
+#: views/wpng/wpng.index.view.class.php:43
 #: views/wpng/wpng.showhand.view.class.php:15
 msgid "Msg"
 msgstr "Tin nhắn"

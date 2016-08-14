@@ -76,6 +76,8 @@ class Wpng
 					'/plugins/angularjs/angular-route.min.js',
 					'/plugins/ngDialog/ngDialog.js',
 
+					'/plugins/bootstrap/bootstrap.min.js',
+
 					//'/plugins/angularjs/angular-animate.min.js',
 					//'/plugins/angular-loading-bar/loading-bar.js'
 				);
@@ -91,7 +93,10 @@ class Wpng
 				$styles = array(
 					'/plugins/ngDialog/ngDialog-theme-default.css',
 					'/plugins/ngDialog/ngDialog.css',
-					
+
+					'/plugins/bootstrap/bootstrap.min.css',
+					'/plugins/bootstrap/bootstrap-theme.min.css',
+
 					//'/plugins/angular-loading-bar/loading-bar.css'
 				);
 				foreach($styles as $item){
@@ -128,6 +133,9 @@ class Wpng
 	}
 	public static function loadFile($relativePath){
 		require_once(WPNG_PLUGIN_DIR . $relativePath);
+	}
+	public static function loadUIControl($controlName){
+		Wpng::loadFile('models/ui.control/ui.' . $controlName . '.class.php');
 	}
 	public static function loadController($controllerName, $subName=''){
 		if($subName == ''){
