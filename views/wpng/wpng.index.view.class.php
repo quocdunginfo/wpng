@@ -9,8 +9,6 @@ namespace Wpng;
 Wpng::loadView(WPNG_MODULE, '_shared', 'main');
 class WpngIndexView extends _SharedMainView {
     public function render($model) {
-
-
         parent::renderInPlaceHolder(function() use ($model) {
             ?>
             <div ng-controller="wpngController">
@@ -65,45 +63,94 @@ class WpngIndexView extends _SharedMainView {
                 <br>
                 <div ng-include src="template.url"></div>
             </div>
-
-            <script>
-                Wpng.App.controller('wpngController', function($scope, ngDialog) {
-                    $scope.template = {};
-                    $scope.emailValue = 'Value from AngularJS';
-					$scope.jqxInputValue = 'Value from AngularJS';
-                    $scope.changeTemplate = function(e, $view){
-                        $scope.template.url = Wpng.BaseUrl + '?module=wpng&controller=wpng&action=' + $view;
-                    };
-                    $scope.showPopup = function(e){
-                        ngDialog.open({ template: Wpng.BaseUrl + '?module=wpng&controller=wpng&action=showhand', className: 'ngdialog-theme-default' });
-                    };
-                    $scope.openDialog = function(e){
-                        ngDialog.open({ template: Wpng.BaseUrl + '/?module=wpng&controller=wpng&action=showhand', className: 'ngdialog-theme-default' });
-                    };
-                    $scope.formSubmit = function(e){
-                        alert('form Submit via AngularJS');
-                    };
+		</div>
+    </div>
+            </div>
+			<script type="text/javascript">
+        $(document).ready(function () {
+            // the 'layout' JSON array defines the internal structure of the docking layout
+            var layout = [{
+                type: 'layoutGroup',
+                orientation: 'horizontal',
+                items: [{
+                    type: 'tabbedGroup',
+                    width: '20%',
+                    items: [{
+                        type: 'layoutPanel',
+                        title: 'Solution Explorer',
+                        contentContainer: 'SolutionExplorerPanel',
+						initContent: function () {
+                            // initialize a jqxTree inside the Solution Explorer Panel
+                            var source = [{
+                                icon: '../../images/earth.png',
+                                label: 'Project',
+                                expanded: true,
+                                items: [{
+                                    icon: '../../images/folder.png',
+                                    label: 'css',
+                                    expanded: true,
+                                    items: [{
+                                        icon: '../../images/nav1.png',
+                                        label: 'jqx.base.css'
+                                    }, {
+                                        icon: '../../images/nav1.png',
+                                        label: 'jqx.energyblue.css'
+                                    }, {
+                                        icon: '../../images/nav1.png',
+                                        label: 'jqx.orange.css'
+                                    }]
+                                }, {
+                                    icon: '../../images/folder.png',
+                                    label: 'scripts',
+                                    items: [{
+                                        icon: '../../images/nav1.png',
+                                        label: 'jqxcore.js'
+                                    }, {
+                                        icon: '../../images/nav1.png',
+                                        label: 'jqxdata.js'
+                                    }, {
+                                        icon: '../../images/nav1.png',
+                                        label: 'jqxgrid.js'
+                                    }]
+                                }, {
+                                    icon: '../../images/nav1.png',
+                                    label: 'index.htm'
+                                }]
+                            }];
+                            $('#solutionExplorerTree').jqxTree({ source: source, width: '100%', height: '100%' });
+                        }
+                    }]
+                },{
+                    type: 'layoutGroup',
+                    orientation: 'vertical',
+                    width: '80%',
+                    items: [{
+                        type: 'documentGroup',
+                        height: '100%',
+                        minHeight: '25%',
+                        items: [{
+                            type: 'documentPanel',
+                            title: 'Document 1',
+                            contentContainer: 'Document1Panel'
+                        }, {
+                            type: 'documentPanel',
+                            title: 'Document 2',
+                            contentContainer: 'Document2Panel'
+                        }]
+                    }]
+                }]
+            }];
+            $('#jqxDockingLayout').jqxDockingLayout({ width: '100%', height: '100%', layout: layout });
+        });
+    </script>
+			<script>
+                Wpng.App.controller('wpngController', function($scope) {
+                    $scope.templateUrl = Wpng.BaseUrl + '?module=wpng&controller=wpng&action=showhand';
                 });
             </script>
-            <script>
+			<script>
                 Wpng.App.controller('showHandController', function($scope) {
-                    $scope.msg = 'Content is set from AngularJS';
-                    $scope.viewShowHand = function(e){
-                        $scope.templateUrl = Wpng.BaseUrl + '?module=wpng&controller=wpng&action=checkout';
-                    };
-                });
-            </script>
-            <script>
-                Wpng.App.controller('checkOutController', function($scope) {
-                    $scope.msg = 'Content is set from AngularJS';
-                    $scope.checkOut = function(e){
-                        alert('Check Out');
-                    };
-                });
-            </script>
-            <script>
-                Wpng.App.controller('stockCountController', function($scope) {
-                    $scope.msg = 'Switch to Page Stock Count';
+                    
                 });
             </script>
             <?php

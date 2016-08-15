@@ -31,6 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 Copyright 2005-2015 quocdunginfo.
 */
 namespace Wpng;
+// END Test Doctrine 2
+
 // Make sure we don't expose any info if called directly
 if ( !function_exists( 'add_action' ) ) {
 	echo __('Hi there!  I\'m just a plugin, not much I can do when called directly.', 'wpng');
@@ -65,3 +67,4 @@ if ( is_admin() ) {
 		Wpng::initAdmin();
 	});
 }
+require_once( WPNG_PLUGIN_DIR . 'doctrine.php' );

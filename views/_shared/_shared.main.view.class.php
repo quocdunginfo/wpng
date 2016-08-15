@@ -25,10 +25,6 @@ class _SharedMainView extends _BaseView {
             }
         </style>
         <div>
-            <p>
-                This is Main Shared View which define ngApp
-            </p>
-			
             <script>
                 var Wpng = {};
                 Wpng.App = angular.module(
