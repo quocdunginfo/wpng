@@ -1,4 +1,5 @@
 <?php
+namespace Wpng;
 
 class Wpng
 {
@@ -61,7 +62,7 @@ class Wpng
 		// Register Main Page
 		add_action('admin_menu', function(){
 			add_menu_page(__('Wpng Page Title', 'wpng'), __('Wpng Menu', 'wpng'), 'manage_options', 'wpng', function(){
-				self::runController();
+				self::runController(WPNG_MODULE);
 			});
 		});
 
@@ -139,63 +140,63 @@ class Wpng
 		// Final
 		self::$admin_initiated = true;
 	}
-	public static function loadFileAbsPath($absPath){
+	public static function loadFileAbsPath($module, $absPath){
 		require_once($absPath);
 	}
-	public static function loadFile($relativePath){
-		require_once(WPNG_PLUGIN_DIR . $relativePath);
+	public static function loadFile($module, $relativePath){
+		require_once(WPNG_PLUGIN_DIR . '../' . $module . '/' . $relativePath);
 	}
-	public static function loadUIControl($controlName){
-		Wpng::loadFile('models/ui.control/ui.' . $controlName . '.class.php');
+	public static function loadUIControl($module, $controlName){
+		Wpng::loadFile($module, 'models/ui.control/ui.' . $controlName . '.class.php');
 	}
-	public static function loadController($controllerName, $subName=''){
+	public static function loadController($module, $controllerName, $subName=''){
 		if($subName == ''){
-			self::loadFile('controllers/' . $controllerName . '/' . $controllerName . '.controller.class.php');
+			self::loadFile($module, 'controllers/' . $controllerName . '/' . $controllerName . '.controller.class.php');
 		}else{
-			self::loadFile('controllers/' . $controllerName . '/' . $controllerName . '.' . $subName . '.controller.class.php');
+			self::loadFile($module, 'controllers/' . $controllerName . '/' . $controllerName . '.' . $subName . '.controller.class.php');
 		}
-		$className = $controllerName . $subName . 'controller';
+		$className = $module . '\\' . $controllerName . $subName . 'controller';
 		return $className;
 	}
-	public static function loadApiController($apiControllerName, $subName=''){
+	public static function loadApiController($module, $apiControllerName, $subName=''){
 		if($subName == ''){
-			self::loadFile('api/' . $apiControllerName . '/' . $apiControllerName . '.controller.class.php');
+			self::loadFile($module, 'api/' . $apiControllerName . '/' . $apiControllerName . '.controller.class.php');
 		}else{
-			self::loadFile('api/' . $apiControllerName . '/' . $apiControllerName . '.' . $subName . '.controller.class.php');
+			self::loadFile($module, 'api/' . $apiControllerName . '/' . $apiControllerName . '.' . $subName . '.controller.class.php');
 		}
 
-		$className = $apiControllerName . $subName . 'controller';
+		$className = $module . '\\' . $apiControllerName . $subName . 'controller';
 		return $className;
 	}
-	public static function loadView($controllerName, $viewName = ''){
+	public static function loadView($module, $controllerName, $viewName = ''){
 		if($viewName == ''){
-			self::loadFile('views/' . $controllerName . '/' . $controllerName . '.view.class.php');
+			self::loadFile($module, 'views/' . $controllerName . '/' . $controllerName . '.view.class.php');
 		}else{
-			self::loadFile('views/' . $controllerName . '/' . $controllerName . '.' . $viewName . '.view.class.php');
+			self::loadFile($module, 'views/' . $controllerName . '/' . $controllerName . '.' . $viewName . '.view.class.php');
 		}
 
-		$className = $controllerName . $viewName . 'view';
+		$className = $module . '\\' . $controllerName . $viewName . 'view';
 		return $className;
 	}
-	public static function runController($controllerName='', $actionName=''){
+	public static function runController($module, $controllerName='', $actionName=''){
 		if($controllerName == ''){
 			$controllerName = 'wpng';
 		}
 		if($actionName == ''){
 			$actionName = 'index';
 		}
-		$controllerClass = self::loadController($controllerName);
+		$controllerClass = self::loadController($module, $controllerName);
 		$ins = new $controllerClass();
 		$ins->$actionName();
 	}
-	public static function runApiController($apiControllerName='', $actionName=''){
+	public static function runApiController($module, $apiControllerName='', $actionName=''){
 		if($apiControllerName == ''){
 			$apiControllerName = 'wpngapi';
 		}
 		if($actionName == ''){
 			$actionName = 'get';
 		}
-		$apiControllerClass = self::loadApiController($apiControllerName);
+		$apiControllerClass = self::loadApiController($module, $apiControllerName);
 		$ins = new $apiControllerClass();
 		$ins->$actionName();
 	}

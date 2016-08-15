@@ -5,6 +5,7 @@
  * Date: 13/8/16
  * Time: 3:32 AM
  */
+namespace Wpng;
 class _BaseView {
     public function renderInPlaceHolder($childView){
         $childView();

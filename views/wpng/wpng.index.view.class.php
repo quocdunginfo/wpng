@@ -5,7 +5,8 @@
  * Date: 13/8/16
  * Time: 3:28 AM
  */
-Wpng::loadView('_shared', 'main');
+namespace Wpng;
+Wpng::loadView(WPNG_MODULE, '_shared', 'main');
 class WpngIndexView extends _SharedMainView {
     public function render($model) {
 
@@ -28,7 +29,7 @@ class WpngIndexView extends _SharedMainView {
 				</div>
                 <div>
                     <?php
-                    Wpng::loadFile('helper/ui.control/ui.helper.render.class.php');
+                    Wpng::loadFile(WPNG_MODULE, 'helper/ui.control/ui.helper.render.class.php');
                     $form = new UIForm();
                     $form->ng_submit = 'formSubmit()';
                     $button = new UIButton();

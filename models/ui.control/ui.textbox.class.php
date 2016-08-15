@@ -5,7 +5,8 @@
  * Date: 14/8/16
  * Time: 6:49 PM
  */
-Wpng::loadFile('models/ui.control/_base/_base.uicontrol.class.php');
+namespace Wpng;
+Wpng::loadFile(WPNG_MODULE, 'models/ui.control/_base/_base.uicontrol.class.php');
 class UITextBox extends _BaseUIControl {
     public static $TYPE_TEXT = 'text';
     public static $TYPE_EMAIL = 'email';

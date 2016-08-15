@@ -5,15 +5,18 @@
  * Date: 13/8/16
  * Time: 3:30 AM
  */
+namespace Wpng;
 class _BaseController {
     protected function render($view, $model){
-        $viewClass = Wpng::loadView($this->getControllerName(), $view);
+        $viewClass = Wpng::loadView(WPNG_MODULE, $this->getControllerName(), $view);
         $ins = new $viewClass();
         $ins->render($model);
     }
     protected function getControllerName(){
         $cName = strtolower(get_class($this));
-        $c = substr($cName, 0, strpos($cName, 'controller'));
+        $p1 = strpos($cName, '\\') + 1;
+        $p2 = strpos($cName, 'controller');
+        $c = substr($cName, $p1, $p2 - $p1);
         return $c;
     }
     protected function httpPostData(){

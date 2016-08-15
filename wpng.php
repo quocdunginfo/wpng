@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Copyright 2005-2015 quocdunginfo.
 */
-
+namespace Wpng;
 // Make sure we don't expose any info if called directly
 if ( !function_exists( 'add_action' ) ) {
 	echo __('Hi there!  I\'m just a plugin, not much I can do when called directly.', 'wpng');
@@ -41,6 +41,7 @@ define( 'WPNG_VERSION', '0.1.0.0' );
 define( 'WPNG_MINIMUM_WP_VERSION', '4.0' );
 define( 'WPNG_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPNG_DELETE_LIMIT', 100000 );
+define( 'WPNG_MODULE', 'wpng' );
 
 require_once( WPNG_PLUGIN_DIR . 'router.php' );
 require_once( WPNG_PLUGIN_DIR . 'bootstrap.php' );

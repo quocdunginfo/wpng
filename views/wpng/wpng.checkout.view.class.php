@@ -5,7 +5,8 @@
  * Date: 13/8/16
  * Time: 3:28 AM
  */
-Wpng::loadView('_base');
+namespace Wpng;
+Wpng::loadView(WPNG_MODULE, '_base');
 class WpngCheckOutView extends _BaseView {
     public function render($model) {
         $this->renderInPlaceHolder(function() use ($model){

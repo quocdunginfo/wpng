@@ -5,9 +5,10 @@
  * Date: 14/8/16
  * Time: 7:11 PM
  */
-Wpng::loadUIControl('form');
-Wpng::loadUIControl('button');
-Wpng::loadUIControl('textbox');
+namespace Wpng;
+Wpng::loadUIControl(WPNG_MODULE, 'form');
+Wpng::loadUIControl(WPNG_MODULE, 'button');
+Wpng::loadUIControl(WPNG_MODULE, 'textbox');
 class UIRenderHelper{
     public static function render($control, $context = null, $getOutput = false){
 
