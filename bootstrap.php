@@ -72,19 +72,25 @@ class Wpng
 			// Register JS
 			{
 				$scripts = array(
-					'/plugins/angularjs/angular.min.js',
-					'/plugins/angularjs/angular-route.min.js',
-					'/plugins/ngDialog/ngDialog.js',
+					'/plugins/angularjs/angular.min.js' => array(),
+					'/plugins/angularjs/angular-route.min.js' => array(),
+					'/plugins/ngDialog/ngDialog.js' => array(),
 
-					'/plugins/bootstrap/bootstrap.min.js',
+					'/plugins/bootstrap/bootstrap.min.js' => array(),
 
-					'/plugins/angularjs/angular-animate.min.js',
-					'/plugins/angular-loading-bar/loading-bar.js'
+					'/plugins/angularjs/angular-animate.min.js' => array(),
+					'/plugins/angular-loading-bar/loading-bar.js' => array(),
+					
+					// BEGIN jQWidget
+					'/plugins/disable-wp-jquery-noconflict/disable-wp-jquery-noconflict.js' => array('jquery'),
+					'/plugins/jqwidgets/jqx-all.js' => array('/plugins/disable-wp-jquery-noconflict/disable-wp-jquery-noconflict.js'),
+					'/plugins/jqwidgets/globalization/globalize.js' => array('/plugins/jqwidgets/jqx-all.js')
+					// END jQWidget
 				);
-				foreach($scripts as $item){
-					$fullURL = plugins_url($item, __FILE__);
-					wp_register_script($item, $fullURL);
-					wp_enqueue_script($item);
+				foreach($scripts as $rPath => $dep){
+					$fullURL = plugins_url($rPath, __FILE__);
+					wp_register_script($rPath, $fullURL, $dep);
+					wp_enqueue_script($rPath);
 				}
 			}
 
@@ -97,7 +103,12 @@ class Wpng
 					'/plugins/bootstrap/bootstrap.min.css',
 					'/plugins/bootstrap/bootstrap-theme.min.css',
 
-					'/plugins/angular-loading-bar/loading-bar.css'
+					'/plugins/angular-loading-bar/loading-bar.css',
+					
+					// BEGIN jQWidget
+					'/plugins/jqwidgets/styles/jqx.base.css',
+					'/plugins/jqwidgets/styles/jqx.bootstrap.css'
+					// END jQWidget
 				);
 				foreach($styles as $item){
 					$fullURL = plugins_url($item, __FILE__);

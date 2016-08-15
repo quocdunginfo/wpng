@@ -16,6 +16,16 @@ class WpngIndexView extends _SharedMainView {
                 <button ng-click="changeTemplate($event, 'showhand')">Show Hand</button>
                 <button ng-click="changeTemplate($event, 'checkout')">Check Out</button>
                 <button ng-click="showPopup($event)">Show Popup</button>
+				<div>
+					<form class="form-horizontal">
+						<input class="form-control" type="text" id="myinput" ng-model="jqxInputValue" required placeholder="Hard Code"/>
+						<script type="text/javascript">
+							$(document).ready(function () {              
+								$("#myinput").jqxInput({});
+							});
+						</script>
+					</form>
+				</div>
                 <div>
                     <?php
                     Wpng::loadFile('helper/ui.control/ui.helper.render.class.php');
@@ -59,6 +69,7 @@ class WpngIndexView extends _SharedMainView {
                 Wpng.App.controller('wpngController', function($scope, ngDialog) {
                     $scope.template = {};
                     $scope.emailValue = 'Value from AngularJS';
+					$scope.jqxInputValue = 'Value from AngularJS';
                     $scope.changeTemplate = function(e, $view){
                         $scope.template.url = Wpng.BaseUrl + '?module=wpng&controller=wpng&action=' + $view;
                     };
