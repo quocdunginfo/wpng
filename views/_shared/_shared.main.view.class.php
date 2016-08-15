@@ -40,7 +40,7 @@ class _SharedMainView extends _BaseView {
                         'ngAnimate'
                     ]
                 );
-                Wpng.BaseUrl = '/';
+                Wpng.BaseUrl = userSettings.url; // TODO:
             </script>
             <div ng-app="WpngApp">
                 <?php

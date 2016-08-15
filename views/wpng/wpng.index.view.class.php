@@ -60,13 +60,13 @@ class WpngIndexView extends _SharedMainView {
                     $scope.template = {};
                     $scope.emailValue = 'Value from AngularJS';
                     $scope.changeTemplate = function(e, $view){
-                        $scope.template.url = '/?module=wpng&controller=wpng&action=' + $view;
+                        $scope.template.url = Wpng.BaseUrl + '?module=wpng&controller=wpng&action=' + $view;
                     };
                     $scope.showPopup = function(e){
-                        ngDialog.open({ template: '/?module=wpng&controller=wpng&action=showhand', className: 'ngdialog-theme-default' });
+                        ngDialog.open({ template: Wpng.BaseUrl + '?module=wpng&controller=wpng&action=showhand', className: 'ngdialog-theme-default' });
                     };
                     $scope.openDialog = function(e){
-                        ngDialog.open({ template: '/?module=wpng&controller=wpng&action=showhand', className: 'ngdialog-theme-default' });
+                        ngDialog.open({ template: Wpng.BaseUrl + '/?module=wpng&controller=wpng&action=showhand', className: 'ngdialog-theme-default' });
                     };
                     $scope.formSubmit = function(e){
                         alert('form Submit via AngularJS');
@@ -77,7 +77,7 @@ class WpngIndexView extends _SharedMainView {
                 Wpng.App.controller('showHandController', function($scope) {
                     $scope.msg = 'Content is set from AngularJS';
                     $scope.viewShowHand = function(e){
-                        $scope.templateUrl = '/?module=wpng&controller=wpng&action=checkout';
+                        $scope.templateUrl = Wpng.BaseUrl + '?module=wpng&controller=wpng&action=checkout';
                     };
                 });
             </script>
