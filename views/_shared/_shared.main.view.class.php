@@ -40,7 +40,7 @@ class _SharedMainView extends _BaseView {
                         'ngAnimate'
                     ]
                 );
-                Wpng.BaseUrl = userSettings.url; // TODO:
+                Wpng.BaseUrl = '<?php echo SITECOOKIEPATH; ?>';//userSettings.url; // TODO:
             </script>
             <div ng-app="WpngApp">
                 <?php
