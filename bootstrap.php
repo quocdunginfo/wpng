@@ -200,4 +200,7 @@ class Wpng
 		$ins = new $apiControllerClass();
 		$ins->$actionName();
 	}
+	public static function getUrl($module, $relativePath){
+		return WPNG_PLUGIN_URL . '../' . $module . '/' . $relativePath;
+	}
 }

@@ -42,11 +42,13 @@ if ( !function_exists( 'add_action' ) ) {
 define( 'WPNG_VERSION', '0.1.0.0' );
 define( 'WPNG_MINIMUM_WP_VERSION', '4.0' );
 define( 'WPNG_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'WPNG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WPNG_DELETE_LIMIT', 100000 );
 define( 'WPNG_MODULE', 'wpng' );
 
 require_once( WPNG_PLUGIN_DIR . 'router.php' );
 require_once( WPNG_PLUGIN_DIR . 'bootstrap.php' );
+require_once( WPNG_PLUGIN_DIR . 'bundle.php' );
 
 add_action( 'init', function(){
 	WpngRouter::init();
