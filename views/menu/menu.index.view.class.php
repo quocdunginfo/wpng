@@ -39,7 +39,7 @@ class MenuIndexView extends _BaseView {
             <?php
         }else{
             ?>
-            <li class="">
+            <li class="" ng-click="switchPage('<?php echo $item['url'] ?>')">
                 <a href="javascript:void(0)" data-url="<?php echo $item['url'] ?>">
                     <i class="menu-icon fa fa-caret-right"></i>
                     <?php echo $item['caption'] ?>

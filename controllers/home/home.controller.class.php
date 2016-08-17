@@ -12,6 +12,12 @@ class HomeController extends _BaseController {
         $this->render(__FUNCTION__, '');
     }
     public function test(){
-        $this->render(__FUNCTION__, 'Content from Server');
+        $this->render(__FUNCTION__, 'Content 1 from Server');
+    }
+    public function test2(){
+        $this->render(__FUNCTION__, 'Content 2 from Server');
+    }
+    public function test3(){
+        $this->render(__FUNCTION__, 'Content 3 from Server');
     }
 }

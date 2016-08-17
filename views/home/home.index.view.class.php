@@ -11,6 +11,7 @@ class HomeIndexView extends _SharedMainView {
     public function render($model) {
         parent::renderInPlaceHolder(function() use ($model) {
             $themeRootUrl = Wpng::getUrl(WPNG_MODULE, 'plugins/aceadmin/html/');
+			wp_enqueue_media();
 			?>
 
 
@@ -20,7 +21,7 @@ class HomeIndexView extends _SharedMainView {
 		<base href="<?php echo $themeRootUrl ?>" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>{{homepage.Title}}</title>
+		<title>{{homepage.title}}</title>
 
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -77,18 +78,44 @@ class HomeIndexView extends _SharedMainView {
 				]
 			);
 			Wpng.BaseUrl = '<?php echo SITECOOKIEPATH; ?>';
+			<?php
+				$current_user = wp_get_current_user();
+			?>
+			Wpng.User = {
+				username: '<?php echo $current_user->user_login ?>'
+			};
 		</script>
 		<script>
-			Wpng.App.controller('homeController', function($scope) {
+			Wpng.App.controller('homeController', function($scope, ngDialog) {
 				$scope.homepage = {
-					Title: 'Angular for WP'
+					title: 'Angular for WP',
+					hide_footer: true,
+					menu_url: Wpng.BaseUrl + '?module=wpng&controller=menu',
+					user: {
+						username: Wpng.User.username,
+						logout_link: '<?php echo wp_logout_url() ?>'
+					}
 				};
-				$scope.swicthPage = function(url){
+
+				// Fn
+				$scope.switchPage = function(url){
 					$scope.wpngMainContentTemplatePath = url;
 				};
-				$scope.hideFooter = true;
-				$scope.menuUrl = Wpng.BaseUrl + '?module=wpng&controller=menu';
-				$scope.swicthPage(Wpng.BaseUrl + '?module=wpng&controller=home&action=test');
+				$scope.testMethod = function(url){
+					alert(url);
+				};
+				// END Fn
+
+				function init(){
+					$scope.switchPage(Wpng.BaseUrl + '?module=wpng&controller=home&action=test');
+					ngDialog.open({
+						template: Wpng.BaseUrl + '?module=wpng&controller=wpmedia',
+						className: 'ngdialog-theme-default',
+						height: '100%',
+						width: '100%'
+					});
+				}
+				init();
 			});
 		</script>
 		<!-- END quocdunginfo -->
@@ -394,7 +421,7 @@ class HomeIndexView extends _SharedMainView {
 								<img class="nav-user-photo" src="../assets/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
-									Jason
+									{{homepage.user.username}}
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
@@ -418,7 +445,7 @@ class HomeIndexView extends _SharedMainView {
 								<li class="divider"></li>
 
 								<li>
-									<a href="#">
+									<a ng-href="{{homepage.user.logout_link}}">
 										<i class="ace-icon fa fa-power-off"></i>
 										Logout
 									</a>
@@ -479,7 +506,7 @@ class HomeIndexView extends _SharedMainView {
 					</div>
 				</div><!-- /.sidebar-shortcuts -->
 
-				<ul class="nav nav-list" ng-include src="menuUrl">
+				<ul class="nav nav-list" ng-include src="homepage.menu_url">
 
 				</ul><!-- /.nav-list -->
 
@@ -631,7 +658,7 @@ class HomeIndexView extends _SharedMainView {
 				</div>
 			</div><!-- /.main-content -->
 
-			<div class="footer" ng-show="!hideFooter">
+			<div class="footer" ng-show="!homepage.hide_footer">
 				<div class="footer-inner">
 					<!-- #section:basics/footer -->
 					<div class="footer-content">

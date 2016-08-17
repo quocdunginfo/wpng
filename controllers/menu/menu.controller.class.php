@@ -11,18 +11,18 @@ class MenuController extends _BaseController {
     public function index(){
         $menu = array(
             array(
-                'url' => WPNG_MODULE . '?module=wpng&controller=home&action=test',
+                'url' => SITECOOKIEPATH . '?module=wpng&controller=home&action=test',
                 'caption' => '@Caption 1',
                 'childs' => array(
                     array(
-                        'url' => WPNG_MODULE . '?module=wpng&controller=home&action=test',
+                        'url' => SITECOOKIEPATH . '?module=wpng&controller=home&action=test2',
                         'caption' => '@Caption 1.1',
                         'childs' => array(
 
                         )
                     ),
                     array(
-                        'url' => WPNG_MODULE . '?module=wpng&controller=home&action=test',
+                        'url' => SITECOOKIEPATH . '?module=wpng&controller=home&action=test3',
                         'caption' => '@Caption 1.2',
                         'childs' => array(
 
@@ -32,6 +32,7 @@ class MenuController extends _BaseController {
             ),
             array(
                 'url' => 'http://google.com',
+                'external' => true,
                 'target' => '_blank',
                 'caption' => '@Google new Tab',
                 'childs' => array(
