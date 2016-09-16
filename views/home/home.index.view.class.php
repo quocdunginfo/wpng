@@ -88,12 +88,17 @@ class HomeIndexView extends _SharedMainView {
 		<script>
 			Wpng.App.controller('homeController', function($scope, ngDialog) {
 				$scope.homepage = {
-					title: 'Angular for WP',
+					title: "<?php echo __('Angular for WP', 'wpng') ?>",
 					hide_footer: true,
 					menu_url: Wpng.BaseUrl + '?module=wpng&controller=menu',
 					user: {
 						username: Wpng.User.username,
-						logout_link: '<?php echo wp_logout_url() ?>'
+						logout_link: '<?php echo wp_logout_url() ?>',
+						user_id: '<?php echo get_current_user_id() ?>',
+						profile_link: '<?php echo get_edit_user_link( get_current_user_id() ) ?>'
+					},
+					wp: {
+						dashboard_link: '<?php echo admin_url() ?>'
 					}
 				};
 
@@ -429,16 +434,16 @@ class HomeIndexView extends _SharedMainView {
 
 							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
 								<li>
-									<a href="#">
+									<a ng-href="{{homepage.wp.dashboard_link}}" target="_blank">
 										<i class="ace-icon fa fa-cog"></i>
-										Settings
+										<?php echo __('Settings', 'wpng') ?>
 									</a>
 								</li>
 
 								<li>
-									<a href="profile.html">
+									<a ng-href="{{homepage.user.profile_link}}" target="_blank">
 										<i class="ace-icon fa fa-user"></i>
-										Profile
+										<?php echo __('Profile', 'wpng') ?>
 									</a>
 								</li>
 
@@ -447,7 +452,7 @@ class HomeIndexView extends _SharedMainView {
 								<li>
 									<a ng-href="{{homepage.user.logout_link}}">
 										<i class="ace-icon fa fa-power-off"></i>
-										Logout
+										<?php echo __('Logout', 'wpng') ?>
 									</a>
 								</li>
 							</ul>

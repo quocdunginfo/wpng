@@ -1,20 +1,25 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: wpng\n"
-"POT-Creation-Date: 2016-09-16 15:51+0000\n"
-"PO-Revision-Date: 2016-09-16 15:53+0000\n"
+"Project-Id-Version: Wpng\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-16 15:58+0000\n"
+"PO-Revision-Date: 2016-09-16 15:59+0000\n"
 "Last-Translator: quocdunginfo <quocdunginfo@gmail.com>\n"
-"Language-Team: English (United States)\n"
-"Language: en-US\n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco - https://localise.biz/\n"
-"X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
-"X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-SearchPath-0: .\n"
-"Report-Msgid-Bugs-To: "
+"X-Generator: Loco - https://localise.biz/"
+
+#: bootstrap.php:64
+msgid "Wpng Menu"
+msgstr ""
+
+#: views/home/home.index.view.class.php:91
+msgid "Angular for WP"
+msgstr "@AngularJS dành cho Wordpress"
 
 #: views/wpng/wpng.index.view.class.php:34
 msgid "Email"
@@ -37,31 +42,35 @@ msgstr ""
 msgid "quocdunginfo"
 msgstr ""
 
-#: views/home/home.index.view.class.php:439
-msgid "Settings"
-msgstr ""
-
 #: bootstrap.php:12
 msgid "Wpng installed successfully!"
-msgstr ""
+msgstr "Wpng đã được cài đặt thành công!"
 
 #: bootstrap.php:64
 msgid "Wpng Page Title"
 msgstr ""
 
-#: bootstrap.php:64
-msgid "Wpng Menu"
-msgstr ""
-
 #: wpng.php:38
 msgid "Hi there!  I'm just a plugin, not much I can do when called directly."
-msgstr ""
+msgstr "Không thể truy cập trực tiếp file thực thi bên trong Plugin."
+
+#: views/home/home.index.view.class.php:439
+msgid "Settings"
+msgstr "Cài đặt"
+
+#: views/home/home.index.view.class.php:446
+msgid "Profile"
+msgstr "Thông tin tài khoản"
+
+#: views/home/home.index.view.class.php:455
+msgid "Logout"
+msgstr "Đăng xuất"
 
 #: views/wpng/wpng.index.view.class.php:27
 msgid "Click here"
-msgstr ""
+msgstr "Click vào đây"
 
 #: views/wpng/wpng.index.view.class.php:52 
 #: views/wpng/wpng.showhand.view.class.php:16
 msgid "Msg"
-msgstr ""
+msgstr "Tin nhắn"
