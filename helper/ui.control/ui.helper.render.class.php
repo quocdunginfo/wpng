@@ -9,6 +9,7 @@ namespace Wpng;
 Wpng::loadUIControl(WPNG_MODULE, 'form');
 Wpng::loadUIControl(WPNG_MODULE, 'button');
 Wpng::loadUIControl(WPNG_MODULE, 'textbox');
+Wpng::loadUIControl(WPNG_MODULE, 'triggertextbox');
 class UIRenderHelper{
     public static function render($control, $context = null, $getOutput = false){
 
@@ -21,6 +22,14 @@ class UIRenderHelper{
                 }
             }
 
+            return;
+        }
+        if ($control instanceof UITriggerTextBox){
+            if(!$context){
+                self::renderTriggerTextBox($control);
+            }else{
+                self::renderTriggerTextBoxInForm($control, $context);
+            }
             return;
         }
         if ($control instanceof UITextBox){
@@ -59,20 +68,20 @@ class UIRenderHelper{
         <?php
     }
     private static function renderButtonInForm($control, $context = null){
-        $class = '';
         if($control->control_length > 0){
-            $class .= self::genResponsiveClass($control->control_length);
+            $control->class = array_merge($control->class, self::genResponsiveClass($control->control_length));
         }
+        $labelClass = array();
         {
             $labelLength = 12 - $control->control_length;
             if ($labelLength > 0) {
-                $class .= self::genResponsiveOffsetClass($labelLength);
+                $labelClass = array_merge($labelClass, self::genResponsiveOffsetClass($labelLength));
             }
         }
 
         ?>
         <div class="form-group">
-            <div class="<?php echo $class ?>">
+            <div class="<?php echo implode(' ', $labelClass) ?>">
                 <?php self::renderButton($control) ?>
             </div>
         </div>
@@ -83,7 +92,7 @@ class UIRenderHelper{
         <button
             id="<?php echo $control->id ?>"
             type="<?php echo $control->button_type ?>"
-            class="btn <?php echo $control->class ?>"
+            class="btn <?php echo implode(' ', $control->class) ?>"
             style=" <?php echo $control->style ?>"
             <?php echo $control->attributes ?>
 
@@ -102,45 +111,44 @@ class UIRenderHelper{
     private static function genResponsiveClass($length){
         //$a = array('col-xs-','col-sm-','col-md-','col-lg-');
         $a = array('col-sm-');
-        $class = '';
+        $class = array();
         foreach($a as $item){
-            $class .= ' ' . $item . $length;
+            $class[] = $item . $length;
         }
         return $class;
     }
     private static function genResponsiveOffsetClass($length){
         //$a = array('col-xs-offset-','col-sm-offset-','col-md-offset-','col-lg-offset-');
         $a = array('col-sm-offset-');
-        $class = '';
+        $class = array();
         foreach($a as $item){
-            $class .= ' ' . $item . $length;
+            $class[] = $item . $length;
         }
         return $class;
     }
     private static function renderTextBoxInForm($control, $context = null){
-        $class = '';
-        $labelClass = 'control-label';
+        $labelClass = array('control-label');
         if($control->control_length > 0){
-            $class .= self::genResponsiveClass($control->control_length);
+            $control->class = array_merge($control->class, self::genResponsiveClass($control->control_length));
         }
         {
             $labelLength = 12 - $control->control_length;
             if ($labelLength > 0) {
-                $labelClass .= self::genResponsiveClass($labelLength);
+                $labelClass = array_merge($labelClass, self::genResponsiveClass($labelLength));
             }
         }
         ?>
         <div class="form-group">
-            <label for="<?php echo $control->id ?>" class="<?php echo $labelClass ?>">
+            <label for="<?php echo $control->id ?>" class="<?php echo implode(' ', $labelClass) ?>">
                 <?php echo $control->label ?>
                 <?php if($control->required) {
                     echo '(*)';
                 }
                 ?>
             </label>
-            <div class="<?php echo $class ?>">
+            <div class="<?php echo implode(' ', $control->class) ?>">
                 <?php
-                $control->class .= ' form-control';
+                $control->class[] = 'form-control';
                 self::renderTextBox($control);
                 ?>
             </div>
@@ -151,7 +159,7 @@ class UIRenderHelper{
         ?>
         <input
             id="<?php echo $control->id ?>"
-            class="<?php echo $control->class ?>"
+            class="<?php echo implode(' ', $control->class) ?>"
             style="<?php echo $control->style ?>"
             type="<?php echo $control->input_type ?>"
             <?php if($control->ng_model): ?>
@@ -176,5 +184,29 @@ class UIRenderHelper{
             <?php endif; ?>
         >
         <?php
+    }
+    private static function renderTriggerTextBox($control){
+        ?>
+        <span class="input-icon input-icon-right">
+            <?php static::renderTextBox($control) ?>
+            <i class="ace-icon fa fa-leaf green"></i>
+        </span>
+        <?php
+    }
+    private static function renderTriggerTextBoxInForm($control){
+        ?>
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right">Input with Icon</label>
+
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <input class="form-control input-mask-product" type="text" id="form-field-mask-3">
+																<span class="input-group-addon">
+																	<i class="ace-icon fa fa-key"></i>
+																</span>
+                </div>
+            </div>
+        </div>
+    <?php
     }
 }

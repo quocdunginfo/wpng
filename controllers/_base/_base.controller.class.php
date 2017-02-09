@@ -8,7 +8,7 @@
 namespace Wpng;
 class _BaseController {
     protected function render($view, $model){
-        $viewClass = Wpng::loadView(WPNG_MODULE, $this->getControllerName(), $view);
+        $viewClass = Wpng::loadView($this->getModule(), $this->getControllerName(), $view);
         $ins = new $viewClass();
         $ins->render($model);
     }
@@ -29,5 +29,9 @@ class _BaseController {
     protected function httpGetData(){
         $request = (object) $_GET;
         return $request;
+    }
+    protected function getModule(){
+        // Override in child class
+        return WPNG_MODULE;
     }
 }

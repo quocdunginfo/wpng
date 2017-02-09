@@ -12,4 +12,5 @@ class _BaseUIControl{
     public $visibility = true;
     public $attributes = '';
     public $ng_show = '';
+    public $class = array();
 }

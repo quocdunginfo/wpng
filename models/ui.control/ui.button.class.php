@@ -13,7 +13,6 @@ class UIButton extends _BaseUIControl {
     public $label;
     public $ng_click;
     public $onclick;
-    public $class = '';
     public $control_length = 12;
     public $button_type = 'button';
 }

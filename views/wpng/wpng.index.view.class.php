@@ -22,12 +22,13 @@ class WpngIndexView extends _SharedMainView {
                     $form->ng_submit = 'formSubmit()';
                     $button = new UIButton();
                     $textbox = new UITextBox();
+                    $ttextbox = new UITriggerTextBox();
                     {
                         //$button->id = 'WpngButton001';
                         $button->label = __('Click here', 'wpng');
                         //$button->ng_click = 'openDialog($event)';
                         $button->style = '';
-                        $button->class = 'btn-primary';
+                        $button->class = array('btn-primary');
                         $button->control_length = 8;
                         $button->button_type = UIButton::$TYPE_SUBMIT;
 
@@ -39,7 +40,16 @@ class WpngIndexView extends _SharedMainView {
                         $textbox->place_holder = 'Enter text here';
                         $textbox->input_type = UITextBox::$TYPE_TEXT;
 
+                        $ttextbox->label = __('Email', 'wpng');
+                        $ttextbox->ng_model = 'addrValue';
+                        $ttextbox->required = true;
+                        //$textbox->read_only = true;
+                        //$textbox->value = '@Sample';
+                        $ttextbox->place_holder = 'Enter text here';
+                        $ttextbox->input_type = UITextBox::$TYPE_TEXT;
+
                         $form->controls[] = $textbox;
+                        $form->controls[] = $ttextbox;
                         $form->controls[] = $button;
                     }
                     ?>
