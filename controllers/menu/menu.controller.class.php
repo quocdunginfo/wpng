@@ -11,12 +11,12 @@ class MenuController extends _BaseController {
     public function index(){
         $menu = array(
             array(
-                'url' => SITECOOKIEPATH . '?module=wpng&controller=home&action=test',
-                'caption' => '@Caption 1',
+                'url' => SITECOOKIEPATH . '?module=wpng&controller=hangsxlist',
+                'caption' => '@Hãng SX',
                 'childs' => array(
                     array(
-                        'url' => SITECOOKIEPATH . '?module=wpng&controller=home&action=test2',
-                        'caption' => '@Caption 1.1',
+                        'url' => SITECOOKIEPATH . '?module=wpng&controller=hangsxlist',
+                        'caption' => '@Hãng SX',
                         'childs' => array(
 
                         )

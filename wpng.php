@@ -46,9 +46,11 @@ define( 'WPNG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WPNG_DELETE_LIMIT', 100000 );
 define( 'WPNG_MODULE', 'wpng' );
 
+require_once( WPNG_PLUGIN_DIR . 'helper/main.php' );
 require_once( WPNG_PLUGIN_DIR . 'router.php' );
 require_once( WPNG_PLUGIN_DIR . 'bootstrap.php' );
 require_once( WPNG_PLUGIN_DIR . 'bundle.php' );
+require_once( WPNG_PLUGIN_DIR . 'db.php' );
 
 add_action( 'init', function(){
 	WpngRouter::init();
@@ -69,4 +71,3 @@ if ( is_admin() ) {
 		Wpng::initAdmin();
 	});
 }
-require_once( WPNG_PLUGIN_DIR . 'doctrine.php' );
