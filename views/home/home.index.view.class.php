@@ -114,7 +114,7 @@ class HomeIndexView extends _SharedMainView {
 				function init(){
 					$scope.switchPage(Wpng.BaseUrl + '?module=wpng&controller=home&action=test');
 					ngDialog.open({
-						template: Wpng.BaseUrl + '?module=wpng&controller=wpmedia',
+						template: Wpng.BaseUrl + '?module=wpng&controller=userlist',
 						className: 'ngdialog-theme-default',
 						height: '100%',
 						width: '100%'

@@ -7,11 +7,8 @@
  */
 namespace Wpng;
 Wpng::loadController(WPNG_MODULE, '_base');
-class HangSXListController extends _BaseController {
+class UserListController extends _BaseController {
     public function index(){
-        $p = new \QdUser();
-        $r = $p->GETLIST();
-
         $this->render(__FUNCTION__, '');
     }
 }

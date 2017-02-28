@@ -15,8 +15,8 @@ class MenuController extends _BaseController {
                 'caption' => '@Hãng SX',
                 'childs' => array(
                     array(
-                        'url' => SITECOOKIEPATH . '?module=wpng&controller=hangsxlist',
-                        'caption' => '@Hãng SX',
+                        'url' => SITECOOKIEPATH . '?module=wpng&controller=userlist',
+                        'caption' => '@User List',
                         'childs' => array(
 
                         )
